@@ -3,9 +3,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Car Settings")]
-    public float constantSpeed = 5f;       // The constant speed of the car
-    public float slowDownSpeed = 2f;      // Speed when the car collides
-    public float accelerationRate = 1f;  // Speed recovery rate after collision
+    public float constantSpeed = 1f;       // The constant speed of the car
+    public float slowDownSpeed = 0.5f;      // Speed when the car collides
+    public float accelerationRate = 0.5f;  // Speed recovery rate after collision
     public float steeringSpeed = 200f;   // Steering sensitivity
 
     private float currentSpeed;
@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleSteering()
     {
+        // Only rotate if A or D is pressed
         float horizontalInput = 0;
 
         if (Input.GetKey(KeyCode.A))
@@ -43,14 +44,19 @@ public class PlayerController : MonoBehaviour
             horizontalInput = 1;
         }
 
-        // Rotate the car
-        rb.rotation += horizontalInput * steeringSpeed * Time.deltaTime;
+        // Rotate the car if there's input
+        if (horizontalInput != 0)
+        {
+            rb.rotation += horizontalInput * steeringSpeed * Time.deltaTime;
+        }
     }
 
     private void MoveForward()
     {
-        // Move the car forward based on its current speed
-        rb.velocity = transform.up * currentSpeed;
+        // Move the car forward along its "forward" direction (tail to head)
+        // The car's forward direction is along its local X-axis
+        Vector2 forwardDirection = transform.right;  // Tail to head along the local X-axis
+        rb.velocity = forwardDirection * currentSpeed;
     }
 
     private void RecoverSpeed()
