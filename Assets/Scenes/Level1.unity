@@ -733,7 +733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantSpeed: 1
   collisionSpeed: 0.2
-  accelerationRate: 0.1
+  accelerationRate: 0.2
   steeringSpeed: 200
 --- !u!50 &1756318551
 Rigidbody2D:

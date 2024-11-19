@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [Header("Follow Settings")]
     public Transform target;       // The player (car) to follow
