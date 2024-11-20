@@ -230,6 +230,11 @@ MonoBehaviour:
   target: {fileID: 1756318548}
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: -10}
+  cam: {fileID: 519420031}
+  minZoom: 2
+  maxZoom: 4
+  zoomSpeed: 0.01
+  zoomFactor: 1
 --- !u!1001 &657337111
 PrefabInstance:
   m_ObjectHideFlags: 0
