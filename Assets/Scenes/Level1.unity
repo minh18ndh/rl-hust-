@@ -2322,9 +2322,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8df7bdd5d7765b7459d49ea4fcad3ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  constantSpeed: 1
+  constantSpeed: 1.2
   collisionSpeed: 0.2
-  accelerationRate: 0.3
+  accelerationRate: 0.4
   steeringSpeed: 200
   FinishLine: {fileID: 923151950}
 --- !u!50 &1756318551
@@ -2570,8 +2570,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 200
+  m_fontSizeBase: 200
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
