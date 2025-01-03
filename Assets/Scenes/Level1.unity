@@ -231,10 +231,10 @@ MonoBehaviour:
   smoothSpeed: 0.125
   offset: {x: 0, y: 0, z: -10}
   cam: {fileID: 519420031}
-  minZoom: 2
-  maxZoom: 4
+  minZoom: 1.5
+  maxZoom: 3.5
   zoomSpeed: 0.01
-  zoomFactor: 1
+  zoomFactor: 10
 --- !u!1001 &657337111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,6 +243,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1348208257}
     m_Modifications:
+    - target: {fileID: 32828644554711195, guid: f4feb4fb118dc5348b2222872f8ae728, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3822456872548278113, guid: f4feb4fb118dc5348b2222872f8ae728, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -738,7 +742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   constantSpeed: 1
   collisionSpeed: 0.2
-  accelerationRate: 0.2
+  accelerationRate: 0.3
   steeringSpeed: 200
 --- !u!50 &1756318551
 Rigidbody2D:
