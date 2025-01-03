@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [Header("Car Settings")]
-    public float constantSpeed = 1f;        // The constant speed of the car
-    public float collisionSpeed = 0.2f;     // Speed when the car collides
-    public float accelerationRate = 0.1f;   // Speed recovery rate after collision
-    public float steeringSpeed = 200f;      // Steering sensitivity
+    [SerializeField] private float constantSpeed = 1f;        // The constant speed of the car
+    [SerializeField] private float collisionSpeed = 0.2f;     // Speed when the car collides
+    [SerializeField] private float accelerationRate = 0.1f;   // Speed recovery rate after collision
+    [SerializeField] private float steeringSpeed = 200f;      // Steering sensitivity
 
     private float currentSpeed;
     private bool isColliding = false;

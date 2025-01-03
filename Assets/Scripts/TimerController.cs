@@ -3,7 +3,7 @@ using TMPro;
 
 public class TimerController : MonoBehaviour
 {
-    public TextMeshProUGUI timerText;
+    [SerializeField] private TextMeshProUGUI timerText;
     public float timer;   // Timer value in seconds
     private bool isPaused;
 

@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public int NumCheckpoints;
+    [SerializeField] private int NumCheckpoints;
     private float rewards;
     public bool isCheckpointPassed;
     private float finalTime;
