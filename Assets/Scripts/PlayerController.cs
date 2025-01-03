@@ -13,10 +13,15 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    [SerializeField] private GameObject FinishLine;
+    private GameManager gmScript;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = constantSpeed;
+
+        gmScript = FinishLine.GetComponent<GameManager>();
     }
 
     private void Update()
@@ -81,5 +86,22 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         isColliding = false; // Resume acceleration after exiting collision
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Checkpoint"))
+        {
+            //Debug.Log("Collided with: " + other.name);
+            gmScript.CheckpointReached();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.CompareTag("Checkpoint") && gmScript != null && gmScript.isCheckpointPassed)
+        {
+            Destroy(other.gameObject);
+        }
     }
 }
