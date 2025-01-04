@@ -77,13 +77,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         isColliding = true;
         currentSpeed = collisionSpeed; // Reduce speed on collision
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D other)
     {
         isColliding = false; // Resume acceleration after exiting collision
     }
@@ -97,14 +97,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Collided with: " + other.name);
         if (other.CompareTag("Checkpoint") && gmScript != null && gmScript.isCheckpointPassed)
         {
             Destroy(other.gameObject);
-            isColliding = false;
-            Debug.Log("isColliding: " + isColliding);
         }
     }
 }
