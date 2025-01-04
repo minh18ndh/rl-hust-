@@ -99,9 +99,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        Debug.Log("Collided with: " + other.name);
         if (other.CompareTag("Checkpoint") && gmScript != null && gmScript.isCheckpointPassed)
         {
             Destroy(other.gameObject);
+            isColliding = false;
+            Debug.Log("isColliding: " + isColliding);
         }
     }
 }
