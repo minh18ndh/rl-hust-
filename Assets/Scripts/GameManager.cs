@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,25 +20,40 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject endGameScreen;
     [SerializeField] private TextMeshProUGUI endGameText;
 
+    [SerializeField] private List<string> questions;
+    [SerializeField] private List<string> answers;
+
+    private int currentCheckpointIndex = 0;
+
     private void Start()
     {
         tmScript = UIManager.GetComponent<TimerController>();
         isCheckpointPassed = false;
+
+        if (questions.Count != answers.Count)
+        {
+            Debug.LogError("Questions and answers lists must have the same length.");
+        }
     }
 
     public void CheckpointReached()
     {
+        if (currentCheckpointIndex < questions.Count)
+        {
+            ShowQuestion(questions[currentCheckpointIndex], answers[currentCheckpointIndex]);
+            currentCheckpointIndex++;
+        }
+        else
+        {
+            Debug.LogWarning("No more questions available for this checkpoint.");
+        }
+
         NumCheckpoints--;
         NumCheckpoints = Mathf.Max(0, NumCheckpoints);
-
-        // Pause the timer
         tmScript.SetPauseState(true);
-        Debug.Log("Checkpoint reached!");
-
-        // Freeze the game
         Time.timeScale = 0f;
 
-        ShowQuestion("What is 2 + 2?", "4"); // Example question and answer
+        Debug.Log("Checkpoint reached!");
     }
 
     private void ShowQuestion(string question, string answer)
@@ -54,24 +70,21 @@ public class GameManager : MonoBehaviour
         if (userAnswer.Equals(correctAnswer, System.StringComparison.OrdinalIgnoreCase))
         {
             rewards += 5;
-            CheckpointPassed();
+            Debug.Log("Correct answer! Rewards: " + rewards);
         }
         else
         {
             rewards -= 5;
-            CheckpointPassed();
+            Debug.Log("Wrong answer! Rewards: " + rewards);
         }
+
+        CheckpointPassed();
     }
 
     private void CheckpointPassed()
     {
         questionScreen.SetActive(false);
-
-        // Resume the timer
         tmScript.SetPauseState(false);
-        Debug.Log(rewards);
-
-        // Continue the game
         Time.timeScale = 1f;
 
         isCheckpointPassed = true;
@@ -87,15 +100,13 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        // Pause the timer
         tmScript.SetPauseState(true);
-        Debug.Log("Finish line reached!");
-
-        // Freeze the game
         Time.timeScale = 0f;
 
         endGameText.text = FinalTime();
         endGameScreen.SetActive(true);
+
+        Debug.Log("Finish line reached!");
     }
 
     private string FinalTime()
