@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("Wrong answer! Rewards: " + rewards);
         }
 
+        answerInput.text = string.Empty;
         CheckpointPassed();
     }
 

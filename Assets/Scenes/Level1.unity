@@ -2399,7 +2399,7 @@ MonoBehaviour:
   collisionSpeed: 0.2
   accelerationRate: 0.4
   steeringSpeed: 200
-  FinishLine: {fileID: 923151950}
+  finishLine: {fileID: 923151950}
 --- !u!50 &1756318551
 Rigidbody2D:
   serializedVersion: 4
