@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
         tmScript.SetPauseState(true);
         Time.timeScale = 0f;
 
-        Debug.Log("Checkpoint reached!");
+        //Debug.Log("Checkpoint reached!");
     }
 
     private void ShowQuestion(string question, string answer)
@@ -157,9 +157,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Finish line reached!");
     }
 
-    public void onHighScoreSceneButtonClick()
+    public void OnHighScoreSceneButtonClick()
     {
-        if (leaderboardLoader.isNewRecord(convertFinalTime()))
+        if (leaderboardLoader.isNewRecord(ConvertFinalTime()))
         {
             savePointWidget.SetActive(true);
             endGameScreen.SetActive(false);
@@ -172,9 +172,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void onSavePointButtonClick()
+    public void OnSavePointButtonClick()
     {
-        leaderboardLoader.UpdateData(nameText.text, convertFinalTime());
+        leaderboardLoader.UpdateData(nameText.text, ConvertFinalTime());
         bot1.SetActive(false);
         bot2.SetActive(false);
         SceneManager.LoadScene("Main-Menu");
@@ -186,7 +186,14 @@ public class GameManager : MonoBehaviour
         int bot1Seconds = Mathf.FloorToInt(bot1FinalTime % 60);
         int bot1Centiseconds = Mathf.FloorToInt((bot1FinalTime * 100) % 100);
 
-        return $"AI 1: {bot1Minutes:00}:{bot1Seconds:00}:{bot1Centiseconds:00}";
+        if (bot1FinalTime != 0)
+        {
+            return $"AI 1: {bot1Minutes:00}:{bot1Seconds:00}:{bot1Centiseconds:00}";
+        }
+        else
+        {
+            return "AI 1 did not finish";
+        }
     }
 
     private string Bot2FinalTime()
@@ -194,8 +201,15 @@ public class GameManager : MonoBehaviour
         int bot2Minutes = Mathf.FloorToInt(bot2FinalTime / 60);
         int bot2Seconds = Mathf.FloorToInt(bot2FinalTime % 60);
         int bot2Centiseconds = Mathf.FloorToInt((bot2FinalTime * 100) % 100);
-        
-        return $"AI 2: {bot2Minutes:00}:{bot2Seconds:00}:{bot2Centiseconds:00}";
+
+        if (bot2FinalTime != 0)
+        {
+            return $"AI 2: {bot2Minutes:00}:{bot2Seconds:00}:{bot2Centiseconds:00}";
+        }
+        else
+        {
+            return "AI 2 did not finish";
+        }
     }
 
     public string PlayerFinalTime()
@@ -209,7 +223,7 @@ public class GameManager : MonoBehaviour
         return $"Your final time is {playerMinutes:00}:{playerSeconds:00}:{playerCentiseconds:00}";
     }
 
-    public string convertFinalTime()
+    public string ConvertFinalTime()
     {
         playerFinalTime = tmScript.timer - rewards;
 

@@ -17,12 +17,23 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject finishLine;
     private GameManager gmScript;
 
+    [SerializeField] private GameObject engine;
+    [SerializeField] private GameObject hit;
+    private AudioSource engineSound;
+    private AudioSource hitSound;
+    private bool engineSoundPlayed;
+    private bool hitSoundPlayed;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         currentSpeed = constantSpeed;
 
         gmScript = finishLine.GetComponent<GameManager>();
+
+        engineSound = engine.GetComponent<AudioSource>();
+        hitSound = hit.GetComponent<AudioSource>();
+        hitSoundPlayed = false;
     }
 
     private void Update()
@@ -84,6 +95,11 @@ public class PlayerController : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Checkpoint"))
         {
+            if (!hitSoundPlayed)
+            {
+                hitSound.Play();
+            }
+            hitSoundPlayed = true;
             isColliding = true;
             currentSpeed = collisionSpeed;
         }
@@ -92,6 +108,7 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionExit2D(Collision2D other)
     {
         isColliding = false; // Resume acceleration after exiting collision
+        hitSoundPlayed = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

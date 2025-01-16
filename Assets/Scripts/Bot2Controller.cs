@@ -28,7 +28,6 @@ public class Bot2Controller : Agent
         nextCheckpoint = 1;
     }
 
-
     private void Update()
     {
         //Debug.Log("Collider(s) inside bot's trigger: " + colliderCount);
@@ -49,7 +48,7 @@ public class Bot2Controller : Agent
         rewardTimer = 0f;
         nextCheckpoint = 1;
 
-        Debug.Log("OnEpisodeBegin called.");
+        //Debug.Log("OnEpisodeBegin called.");
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -195,7 +194,7 @@ public class Bot2Controller : Agent
             // Convert the number string to an integer
             if (int.TryParse(trackNumberString, out int trackNumber))
             {
-                Debug.Log("Track number: " + trackNumber);
+                //Debug.Log("Track number: " + trackNumber);
             }
 
             nextCheckpoint = trackNumber + 1;

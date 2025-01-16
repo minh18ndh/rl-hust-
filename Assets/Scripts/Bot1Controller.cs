@@ -48,7 +48,7 @@ public class Bot1Controller : Agent
         rewardTimer = 0f;
         nextCheckpoint = 1;
 
-        Debug.Log("OnEpisodeBegin called.");
+        //Debug.Log("OnEpisodeBegin called.");
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -194,7 +194,7 @@ public class Bot1Controller : Agent
             // Convert the number string to an integer
             if (int.TryParse(trackNumberString, out int trackNumber))
             {
-                Debug.Log("Track number: " + trackNumber);
+                //Debug.Log("Track number: " + trackNumber);
             }
 
             nextCheckpoint = trackNumber + 1;

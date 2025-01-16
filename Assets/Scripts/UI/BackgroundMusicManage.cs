@@ -1,59 +1,35 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BackgroundMusicManager : MonoBehaviour
 {
-    private static BackgroundMusicManager instance;
+    public static BackgroundMusicManager Instance { get; private set; } // Singleton instance
+    public AudioSource audioSource;
 
     private void Awake()
     {
-        // Ensure only one instance exists
-        if (instance == null)
+        // Check if an instance already exists
+        if (Instance == null)
         {
-            instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
+            Instance = this; // Set the singleton instance
+            DontDestroyOnLoad(gameObject); // Make persistent
+            audioSource = GetComponent<AudioSource>(); // Cache the AudioSource
         }
         else
         {
-            Destroy(gameObject); // Destroy duplicates
+            Destroy(gameObject); // Destroy duplicate
         }
     }
 
-    private void OnEnable()
+    public void PlayMusic()
     {
-        // Subscribe to scene loading event
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    private void OnDisable()
-    {
-        // Unsubscribe from scene loading event
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        // Stop music if the current scene is "Level1"
-        if (scene.name == "Level1")
-        {
-            GetComponent<AudioSource>().Pause();
-        }
-        else
-        {
-            GetComponent<AudioSource>().UnPause();
-        }
-    }
-
-    public void MuteBGM()
-    {
-        AudioSource audioSource = GetComponent<AudioSource>();
-        if (audioSource.isPlaying)
-        {
-            audioSource.Pause();
-        }
-        else
+        if (!audioSource.isPlaying)
         {
             audioSource.UnPause();
         }
+    }
+
+    public void StopMusic()
+    {
+        audioSource.Pause();
     }
 }

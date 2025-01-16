@@ -682,8 +682,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  constantSpeed: 1.8
-  collisionSpeed: 0.8
+  constantSpeed: 1.4
+  collisionSpeed: 0.6
   accelerationRate: 0.4
   steeringSpeed: 200
   botCheckpoints:
@@ -3360,8 +3360,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  constantSpeed: 1.5
-  collisionSpeed: 0.6
+  constantSpeed: 1.8
+  collisionSpeed: 0.8
   accelerationRate: 0.4
   steeringSpeed: 200
   botCheckpoints:
@@ -8892,6 +8892,8 @@ MonoBehaviour:
   steeringSpeed: 300
   speedText: {fileID: 1773313176}
   finishLine: {fileID: 923151950}
+  engine: {fileID: 1307027206}
+  hit: {fileID: 1574494564}
 --- !u!50 &1756318551
 Rigidbody2D:
   serializedVersion: 4

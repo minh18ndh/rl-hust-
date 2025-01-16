@@ -1575,18 +1575,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 824970605}
-        m_TargetAssemblyTypeName: BackgroundMusicManager, Assembly-CSharp
-        m_MethodName: MuteBGM
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1784757174}
         m_TargetAssemblyTypeName: SoundToggle, Assembly-CSharp
         m_MethodName: ToggleSprite
@@ -1651,6 +1639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: 8ebc6548e2409404e86e0dfa111857ad, type: 3}
   sprite2: {fileID: 21300000, guid: 4c51ac5781564af45948e66e45ffed64, type: 3}
+  BGMManager: {fileID: 824970602}
 --- !u!1 &1955181121
 GameObject:
   m_ObjectHideFlags: 0
