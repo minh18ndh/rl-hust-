@@ -19,9 +19,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private GameObject engine;
     [SerializeField] private GameObject hit;
-    private AudioSource engineSound;
     private AudioSource hitSound;
-    private bool engineSoundPlayed;
     private bool hitSoundPlayed;
 
     private void Start()
@@ -31,7 +29,6 @@ public class PlayerController : MonoBehaviour
 
         gmScript = finishLine.GetComponent<GameManager>();
 
-        engineSound = engine.GetComponent<AudioSource>();
         hitSound = hit.GetComponent<AudioSource>();
         hitSoundPlayed = false;
     }
