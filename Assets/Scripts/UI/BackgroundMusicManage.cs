@@ -7,16 +7,15 @@ public class BackgroundMusicManager : MonoBehaviour
 
     private void Awake()
     {
-        // Check if an instance already exists
         if (Instance == null)
         {
-            Instance = this; // Set the singleton instance
-            DontDestroyOnLoad(gameObject); // Make persistent
-            audioSource = GetComponent<AudioSource>(); // Cache the AudioSource
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            audioSource = GetComponent<AudioSource>(); 
         }
         else
         {
-            Destroy(gameObject); // Destroy duplicate
+            Destroy(gameObject);
         }
     }
 

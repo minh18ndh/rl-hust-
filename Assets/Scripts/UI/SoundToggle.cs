@@ -3,14 +3,13 @@ using UnityEngine.UI;
 
 public class SoundToggle : MonoBehaviour
 {
-    [SerializeField] private Sprite sprite1; // The first sprite
-    [SerializeField] private Sprite sprite2; // The second sprite
-    private Image buttonImage; // Reference to the button's image component
-    private bool isSprite1; // Tracks which sprite is currently active
+    [SerializeField] private Sprite sprite1;
+    [SerializeField] private Sprite sprite2;
+    private Image buttonImage;
+    private bool isSprite1;
 
     private void Start()
     {
-        // Get the Image component on the button
         buttonImage = GetComponent<Image>();
         if (buttonImage == null)
         {
@@ -32,7 +31,6 @@ public class SoundToggle : MonoBehaviour
 
     public void ToggleSprite()
     {
-        // Toggle between sprite1 and sprite2
         if (isSprite1)
         {
             BackgroundMusicManager.Instance.StopMusic();
@@ -44,7 +42,6 @@ public class SoundToggle : MonoBehaviour
             buttonImage.sprite = sprite1;
         }
 
-        // Switch the state
         isSprite1 = !isSprite1;
     }
 }
