@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject endGameScreen;
     [SerializeField] private TextMeshProUGUI endGameText;
+    [SerializeField] private TextMeshProUGUI endGameSVText;
     [SerializeField] private TextMeshProUGUI aiText;
     [SerializeField] private TextMeshProUGUI correctAnsText;
     [SerializeField] private TextMeshProUGUI currentCheckpointText;
@@ -40,6 +41,9 @@ public class GameManager : MonoBehaviour
     private int correctAnswerNum = 0;
     private bool bot1Finished;
     private bool bot2Finished;
+
+    [SerializeField] private GameObject bot1;
+    [SerializeField] private GameObject bot2;
 
     private void Start()
     {
@@ -93,14 +97,12 @@ public class GameManager : MonoBehaviour
         if (userAnswer.Equals(correctAnswer, System.StringComparison.OrdinalIgnoreCase))
         {
             rewards += 2;
-            tmScript.addTime(-5);
             correctAnswerNum++;
             Debug.Log("Correct answer! Rewards: " + rewards);
         }
         else
         {
             rewards -= 2;
-            tmScript.addTime(5);
             Debug.Log("Wrong answer! Rewards: " + rewards);
         }
 
@@ -145,8 +147,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
 
         //endGameText.text = Bot1FinalTime() + Bot2FinalTime() + PlayerFinalTime();
-        endGameText.text = "Your Final Time: " + PlayerFinalTime();
-        aiText.text = "AI Times:\n" + Bot1FinalTime() + "\n" + Bot2FinalTime();
+        endGameText.text = PlayerFinalTime();
+        endGameSVText.text = PlayerFinalTime();
+        aiText.text = Bot1FinalTime() + "\n" + Bot2FinalTime();
         correctAnsText.text = "Correct Answers: " + correctAnswerNum.ToString() + "/5";
         endGameScreen.SetActive(true);
 
@@ -162,6 +165,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            bot1.SetActive(false);
+            bot2.SetActive(false);
             SceneManager.LoadScene("Main-Menu");
         }
     }
@@ -169,6 +174,8 @@ public class GameManager : MonoBehaviour
     public void onSavePointButtonClick()
     {
         leaderboardLoader.UpdateData(nameText.text, convertFinalTime());
+        bot1.SetActive(false);
+        bot2.SetActive(false);
         SceneManager.LoadScene("Main-Menu");
     }
 
@@ -198,7 +205,7 @@ public class GameManager : MonoBehaviour
         int playerSeconds = Mathf.FloorToInt(playerFinalTime % 60);
         int playerCentiseconds = Mathf.FloorToInt((playerFinalTime * 100) % 100);
 
-        return $"\n\nYour final time is {playerMinutes:00}:{playerSeconds:00}:{playerCentiseconds:00}";
+        return $"Your final time is {playerMinutes:00}:{playerSeconds:00}:{playerCentiseconds:00}";
     }
 
     public string convertFinalTime()

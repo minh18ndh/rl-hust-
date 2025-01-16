@@ -780,10 +780,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.2
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 5
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1952,7 +1952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.1641, y: -88.4}
+  m_AnchoredPosition: {x: 0.0000085831, y: -88.4}
   m_SizeDelta: {x: 127.0682, y: 81.1242}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &259569843
@@ -1975,7 +1975,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "AI Times: \nAI 1: xx:xx:xx\nAI 2: xx:xx:xx"
+  m_text: 'AI 1: xx:xx:xx
+
+    AI 2: xx:xx:xx'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0dd51ca5a58a877479480fd528e306b0, type: 2}
   m_sharedMaterial: {fileID: -2630087064600603831, guid: 0dd51ca5a58a877479480fd528e306b0, type: 2}
@@ -2002,7 +2004,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
+  m_fontSize: 24.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2717,7 +2719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &648409250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4266,6 +4268,7 @@ MonoBehaviour:
   answerInput: {fileID: 1989095645}
   endGameScreen: {fileID: 685020068}
   endGameText: {fileID: 2087100628}
+  endGameSVText: {fileID: 88143240}
   aiText: {fileID: 259569843}
   correctAnsText: {fileID: 1375251747}
   currentCheckpointText: {fileID: 1560191177}
@@ -4273,6 +4276,8 @@ MonoBehaviour:
   savePointWidget: {fileID: 2077284975}
   nameText: {fileID: 130621008}
   qaLoader: {fileID: 1231456423}
+  bot1: {fileID: 728332783}
+  bot2: {fileID: 57203173}
 --- !u!61 &923151955
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4543,7 +4548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 25, y: -0.0000076293945}
+  m_AnchoredPosition: {x: 25, y: -0.000015258789}
   m_SizeDelta: {x: -104.8982, y: -0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1027038058
@@ -10020,7 +10025,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2077284976}
-  - component: {fileID: 2077284977}
   m_Layer: 5
   m_Name: SavePoint
   m_TagString: Untagged
@@ -10048,21 +10052,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.00048828125}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2077284977
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2077284975}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9eece8afbb06a249bb5032fc45c5e2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gm: {fileID: 0}
-  highScoreText: {fileID: 88143240}
-  input: {fileID: 0}
 --- !u!1 &2087100626
 GameObject:
   m_ObjectHideFlags: 0
@@ -10147,10 +10136,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.2
+  m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 5
   m_fontSizeMax: 72
   m_fontStyle: 0

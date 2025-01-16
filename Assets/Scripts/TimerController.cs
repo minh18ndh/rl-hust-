@@ -22,13 +22,6 @@ public class TimerController : MonoBehaviour
         }
     }
 
-    public void addTime(float time)
-    {
-        timer += time;
-        if(timer < 0)
-            timer = 0;
-    }
-
     public void SetPauseState(bool pause)
     {
         isPaused = pause;

@@ -28,6 +28,7 @@ public class Bot2Controller : Agent
         nextCheckpoint = 1;
     }
 
+
     private void Update()
     {
         //Debug.Log("Collider(s) inside bot's trigger: " + colliderCount);
