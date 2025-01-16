@@ -1,12 +1,13 @@
 using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private int NumCheckpoints;
     private float rewards;
-    public bool isCheckpointPassed;
+    [HideInInspector] public bool isCheckpointPassed;
     private float playerFinalTime;
     private float bot1FinalTime;
     private float bot2FinalTime;
@@ -21,11 +22,22 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject endGameScreen;
     [SerializeField] private TextMeshProUGUI endGameText;
+    [SerializeField] private TextMeshProUGUI aiText;
+    [SerializeField] private TextMeshProUGUI correctAnsText;
+    [SerializeField] private TextMeshProUGUI currentCheckpointText;
 
-    [SerializeField] private List<string> questions;
-    [SerializeField] private List<string> answers;
+
+    [SerializeField] private LeaderboardLoader leaderboardLoader;
+    [SerializeField] private GameObject savePointWidget;
+    [SerializeField] private TMP_InputField nameText;
+
+    private List<string> questions;
+    private List<string> answers;
+
+    [SerializeField] private QALoader qaLoader;
 
     private int currentCheckpointIndex = 0;
+    private int correctAnswerNum = 0;
     private bool bot1Finished;
     private bool bot2Finished;
 
@@ -36,9 +48,13 @@ public class GameManager : MonoBehaviour
         bot1Finished = false;
         bot2Finished = false;
 
-        if (questions.Count != answers.Count)
+        List<QuestionAnswer> qa = qaLoader.get5RandomQA();
+        questions = new List<string>();
+        answers = new List<string>();
+        for (int i = 0; i < qa.Count; i++)
         {
-            Debug.LogError("Questions and answers lists must have the same length.");
+            questions.Add(qa[i].q);
+            answers.Add(qa[i].a);
         }
     }
 
@@ -48,6 +64,7 @@ public class GameManager : MonoBehaviour
         {
             ShowQuestion(questions[currentCheckpointIndex], answers[currentCheckpointIndex]);
             currentCheckpointIndex++;
+            currentCheckpointText.text = "Checkpoints: " + currentCheckpointIndex.ToString() + "/5";
         }
         else
         {
@@ -76,11 +93,14 @@ public class GameManager : MonoBehaviour
         if (userAnswer.Equals(correctAnswer, System.StringComparison.OrdinalIgnoreCase))
         {
             rewards += 2;
+            tmScript.addTime(-5);
+            correctAnswerNum++;
             Debug.Log("Correct answer! Rewards: " + rewards);
         }
         else
         {
             rewards -= 2;
+            tmScript.addTime(5);
             Debug.Log("Wrong answer! Rewards: " + rewards);
         }
 
@@ -124,10 +144,32 @@ public class GameManager : MonoBehaviour
         tmScript.SetPauseState(true);
         Time.timeScale = 0f;
 
-        endGameText.text = Bot1FinalTime() + Bot2FinalTime() + PlayerFinalTime();
+        //endGameText.text = Bot1FinalTime() + Bot2FinalTime() + PlayerFinalTime();
+        endGameText.text = "Your Final Time: " + PlayerFinalTime();
+        aiText.text = "AI Times:\n" + Bot1FinalTime() + "\n" + Bot2FinalTime();
+        correctAnsText.text = "Correct Answers: " + correctAnswerNum.ToString() + "/5";
         endGameScreen.SetActive(true);
 
         Debug.Log("Finish line reached!");
+    }
+
+    public void onHighScoreSceneButtonClick()
+    {
+        if (leaderboardLoader.isNewRecord(convertFinalTime()))
+        {
+            savePointWidget.SetActive(true);
+            endGameScreen.SetActive(false);
+        }
+        else
+        {
+            SceneManager.LoadScene("Main-Menu");
+        }
+    }
+
+    public void onSavePointButtonClick()
+    {
+        leaderboardLoader.UpdateData(nameText.text, convertFinalTime());
+        SceneManager.LoadScene("Main-Menu");
     }
 
     private string Bot1FinalTime()
@@ -136,7 +178,7 @@ public class GameManager : MonoBehaviour
         int bot1Seconds = Mathf.FloorToInt(bot1FinalTime % 60);
         int bot1Centiseconds = Mathf.FloorToInt((bot1FinalTime * 100) % 100);
 
-        return $"Bot_v1 time is {bot1Minutes:00}:{bot1Seconds:00}:{bot1Centiseconds:00}";
+        return $"AI 1: {bot1Minutes:00}:{bot1Seconds:00}:{bot1Centiseconds:00}";
     }
 
     private string Bot2FinalTime()
@@ -144,11 +186,11 @@ public class GameManager : MonoBehaviour
         int bot2Minutes = Mathf.FloorToInt(bot2FinalTime / 60);
         int bot2Seconds = Mathf.FloorToInt(bot2FinalTime % 60);
         int bot2Centiseconds = Mathf.FloorToInt((bot2FinalTime * 100) % 100);
-
-        return $"\n\nBot_v2 time is {bot2Minutes:00}:{bot2Seconds:00}:{bot2Centiseconds:00}";
+        
+        return $"AI 2: {bot2Minutes:00}:{bot2Seconds:00}:{bot2Centiseconds:00}";
     }
 
-    private string PlayerFinalTime()
+    public string PlayerFinalTime()
     {
         playerFinalTime = tmScript.timer - rewards;
 
@@ -157,5 +199,16 @@ public class GameManager : MonoBehaviour
         int playerCentiseconds = Mathf.FloorToInt((playerFinalTime * 100) % 100);
 
         return $"\n\nYour final time is {playerMinutes:00}:{playerSeconds:00}:{playerCentiseconds:00}";
+    }
+
+    public string convertFinalTime()
+    {
+        playerFinalTime = tmScript.timer - rewards;
+
+        int playerMinutes = Mathf.FloorToInt(playerFinalTime / 60);
+        int playerSeconds = Mathf.FloorToInt(playerFinalTime % 60);
+        int playerCentiseconds = Mathf.FloorToInt((playerFinalTime * 100) % 100);
+
+        return $"{playerMinutes:00}:{playerSeconds:00}:{playerCentiseconds:00}";
     }
 }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System;
 
 public class TimerController : MonoBehaviour
 {
@@ -17,8 +18,15 @@ public class TimerController : MonoBehaviour
             int seconds = Mathf.FloorToInt(timer % 60);
             int centiseconds = Mathf.FloorToInt((timer * 100) % 100);
 
-            timerText.text = $"{minutes:00}:{seconds:00}:{centiseconds:00}";
+            timerText.text = $"Time: {minutes:00}:{seconds:00}:{centiseconds:00}";
         }
+    }
+
+    public void addTime(float time)
+    {
+        timer += time;
+        if(timer < 0)
+            timer = 0;
     }
 
     public void SetPauseState(bool pause)

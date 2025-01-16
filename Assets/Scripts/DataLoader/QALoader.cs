@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 [System.Serializable]
 public class QuestionAnswer
@@ -53,5 +51,36 @@ public class QALoader : MonoBehaviour
         data.questions[index].q = inputs[index].q.text;
         data.questions[index].a = inputs[index].a.text;
         SaveDataToJson(jsonFilePath, data);
+    }
+
+    public List<QuestionAnswer> get5RandomQA()
+    {
+        List<QuestionAnswer> res = new List<QuestionAnswer>();
+        int[] randomNumbers = GenerateUniqueRandomNumbers(0, 9, 5);
+        foreach (int number in randomNumbers)
+        {
+            res.Add(data.questions[number]);
+        }
+
+        return res;
+    }
+
+    int[] GenerateUniqueRandomNumbers(int min, int max, int count)
+    {
+        List<int> numbers = new List<int>();
+        for (int i = min; i <= max; i++)
+        {
+            numbers.Add(i);
+        }
+
+        int[] result = new int[count];
+        for (int i = 0; i < count; i++)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, numbers.Count);
+            result[i] = numbers[randomIndex];
+            numbers.RemoveAt(randomIndex);
+        }
+
+        return result;
     }
 }

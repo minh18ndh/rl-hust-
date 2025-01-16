@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -7,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float collisionSpeed = 0.2f;     // Speed when the car collides
     [SerializeField] private float accelerationRate = 0.1f;   // Speed recovery rate after collision
     [SerializeField] private float steeringSpeed = 300f;      // Steering sensitivity
-
+    [SerializeField] private TextMeshProUGUI speedText;
     private float currentSpeed;
     private bool isColliding = false;
 
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         HandleSteering();
+        speedText.text = ((int)(currentSpeed * 50)).ToString() + " km/h";
     }
 
     private void FixedUpdate()
