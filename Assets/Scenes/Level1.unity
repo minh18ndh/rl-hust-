@@ -1381,6 +1381,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bd1374c88e5ca46a0baa141c359310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bot1: {fileID: 728332783}
+  bot2: {fileID: 57203173}
 --- !u!114 &191581173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1428,7 +1430,7 @@ MonoBehaviour:
       - m_Target: {fileID: 191581172}
         m_TargetAssemblyTypeName: ChangeSceneButton, Assembly-CSharp
         m_MethodName: loadScene
-        m_Mode: 5
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

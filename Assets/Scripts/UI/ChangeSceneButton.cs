@@ -5,8 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class ChangeSceneButton : MonoBehaviour
 {
-    public void loadScene(string sceneName)
+    [SerializeField] private GameObject bot1;
+    [SerializeField] private GameObject bot2;
+    public void loadScene()
     {
-        SceneManager.LoadScene(sceneName);
+        bot1.SetActive(false);
+        bot2.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main-Menu");
     }
 }
