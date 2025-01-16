@@ -3142,7 +3142,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 923151954}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: onHighScoreSceneButtonClick
+        m_MethodName: OnHighScoreSceneButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5770,7 +5770,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 923151954}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: onSavePointButtonClick
+        m_MethodName: OnSavePointButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
