@@ -7,9 +7,9 @@ using System.Collections.Generic;
 public class Bot1Controller : Agent
 {
     [Header("Car Settings")]
-    [SerializeField] private float constantSpeed = 2.0f;      // The constant speed of the car
-    [SerializeField] private float collisionSpeed = 1.0f;     // Speed when the car collides
-    [SerializeField] private float accelerationRate = 0.5f;   // Speed recovery rate after collision
+    [SerializeField] private float constantSpeed = 1.8f;      // The constant speed of the car
+    [SerializeField] private float collisionSpeed = 0.8f;     // Speed when the car collides
+    [SerializeField] private float accelerationRate = 0.4f;   // Speed recovery rate after collision
     [SerializeField] private float steeringSpeed = 200f;      // Steering sensitivity
 
     private float currentSpeed;

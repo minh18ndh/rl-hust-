@@ -1548,8 +1548,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  constantSpeed: 1.4
-  collisionSpeed: 0.4
+  constantSpeed: 1.8
+  collisionSpeed: 0.8
   accelerationRate: 0.4
   steeringSpeed: 200
   botCheckpoints:
