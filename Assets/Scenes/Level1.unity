@@ -1429,7 +1429,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 191581172}
         m_TargetAssemblyTypeName: ChangeSceneButton, Assembly-CSharp
-        m_MethodName: loadScene
+        m_MethodName: loadMainMenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -7,7 +7,13 @@ public class ChangeSceneButton : MonoBehaviour
 {
     [SerializeField] private GameObject bot1;
     [SerializeField] private GameObject bot2;
-    public void loadScene()
+
+    public void loadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void loadMainMenuScene()
     {
         bot1.SetActive(false);
         bot2.SetActive(false);
