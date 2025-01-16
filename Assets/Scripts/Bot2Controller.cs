@@ -7,8 +7,8 @@ using System.Collections.Generic;
 public class Bot2Controller : Agent
 {
     [Header("Car Settings")]
-    [SerializeField] private float constantSpeed = 1.2f;      // The constant speed of the car
-    [SerializeField] private float collisionSpeed = 0.2f;     // Speed when the car collides
+    [SerializeField] private float constantSpeed = 1.8f;      // The constant speed of the car
+    [SerializeField] private float collisionSpeed = 0.8f;     // Speed when the car collides
     [SerializeField] private float accelerationRate = 0.4f;   // Speed recovery rate after collision
     [SerializeField] private float steeringSpeed = 200f;      // Steering sensitivity
 
@@ -85,12 +85,12 @@ public class Bot2Controller : Agent
         if (dotProduct > 0.9)
         {
             AddReward(dotProduct * 0.1f); // Reward for forward motion
-            Debug.Log("Progress made. Reward: " + dotProduct * 0.1f);
+            //Debug.Log("Progress made. Reward: " + dotProduct * 0.1f);
         }
         else
         {
             AddReward(Mathf.Min(-0.01f, dotProduct * 0.5f)); // Penalize off-track and backward motion
-            Debug.Log("Backward. Reward: " + Mathf.Min(-0.01f, dotProduct * 0.5f));
+            //Debug.Log("Backward. Reward: " + Mathf.Min(-0.01f, dotProduct * 0.5f));
         }
 
         rewardTimer += Time.deltaTime;
@@ -99,13 +99,13 @@ public class Bot2Controller : Agent
             if (currentSpeed == constantSpeed)
             {
                 AddReward(1.0f);
-                Debug.Log("Stay on track. Reward: 1.0");
+                //Debug.Log("Stay on track. Reward: 1.0");
             }
 
             if (currentSpeed == collisionSpeed)
             {
                 AddReward(-1.0f);
-                Debug.Log("Stuck too long. Reward: -1.0");
+                //Debug.Log("Stuck too long. Reward: -1.0");
             }
 
             rewardTimer = 0f;
@@ -161,8 +161,8 @@ public class Bot2Controller : Agent
             {
                 AddReward(20f);
                 Debug.Log("Finish line reached! Reward: 20");
-                EndEpisode();
-                Debug.Log("EndEpisode called.");
+                //EndEpisode();
+                //Debug.Log("EndEpisode called.");
             }
 
             else
@@ -170,7 +170,7 @@ public class Bot2Controller : Agent
                 isColliding = true;
                 currentSpeed = collisionSpeed;
                 AddReward(-0.5f);
-                Debug.Log("Collided. Reward: -0.5");
+                //Debug.Log("Collided. Reward: -0.5");
             }
         }
     }
@@ -178,8 +178,8 @@ public class Bot2Controller : Agent
     private void OnCollisionExit2D(Collision2D other)
     {
         isColliding = false;
-        AddReward(5.0f);
-        Debug.Log("Escaped. Reward: 5.0");
+        AddReward(0.3f);
+        //Debug.Log("Escaped. Reward: 0.3");
     }
 
     private void OnTriggerEnter2D(Collider2D other)

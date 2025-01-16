@@ -7,8 +7,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int NumCheckpoints;
     private float rewards;
     public bool isCheckpointPassed;
-    private float finalTime;
-    private float botFinalTime;
+    private float playerFinalTime;
+    private float bot1FinalTime;
+    private float bot2FinalTime;
 
     [SerializeField] private GameObject UIManager;
     private TimerController tmScript;
@@ -25,13 +26,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<string> answers;
 
     private int currentCheckpointIndex = 0;
-    private bool botFinished;
+    private bool bot1Finished;
+    private bool bot2Finished;
 
     private void Start()
     {
         tmScript = UIManager.GetComponent<TimerController>();
         isCheckpointPassed = false;
-        botFinished = false;
+        bot1Finished = false;
+        bot2Finished = false;
 
         if (questions.Count != answers.Count)
         {
@@ -101,11 +104,18 @@ public class GameManager : MonoBehaviour
             EndGame();
         }
 
-        if (other.CompareTag("Bot") && !botFinished)
+        if (other.CompareTag("Bot_v1") && !bot1Finished)
         {
-            botFinalTime = tmScript.timer;
-            Debug.Log("Bot time: " + botFinalTime);
-            botFinished = true;
+            bot1FinalTime = tmScript.timer;
+            Debug.Log("Bot_v1 time: " + bot1FinalTime);
+            bot1Finished = true;
+        }
+
+        if (other.CompareTag("Bot_v2") && !bot2Finished)
+        {
+            bot2FinalTime = tmScript.timer;
+            Debug.Log("Bot_v2 time: " + bot2FinalTime);
+            bot2Finished = true;
         }
     }
 
@@ -114,29 +124,38 @@ public class GameManager : MonoBehaviour
         tmScript.SetPauseState(true);
         Time.timeScale = 0f;
 
-        endGameText.text = BotFinalTime() + FinalTime();
+        endGameText.text = Bot1FinalTime() + Bot2FinalTime() + PlayerFinalTime();
         endGameScreen.SetActive(true);
 
         Debug.Log("Finish line reached!");
     }
 
-    private string BotFinalTime()
+    private string Bot1FinalTime()
     {
-        int minutes = Mathf.FloorToInt(botFinalTime / 60);
-        int seconds = Mathf.FloorToInt(botFinalTime % 60);
-        int centiseconds = Mathf.FloorToInt((botFinalTime * 100) % 100);
+        int bot1Minutes = Mathf.FloorToInt(bot1FinalTime / 60);
+        int bot1Seconds = Mathf.FloorToInt(bot1FinalTime % 60);
+        int bot1Centiseconds = Mathf.FloorToInt((bot1FinalTime * 100) % 100);
 
-        return $"Bot time is {minutes:00}:{seconds:00}:{centiseconds:00}";
+        return $"Bot_v1 time is {bot1Minutes:00}:{bot1Seconds:00}:{bot1Centiseconds:00}";
     }
 
-    private string FinalTime()
+    private string Bot2FinalTime()
     {
-        finalTime = tmScript.timer - rewards;
+        int bot2Minutes = Mathf.FloorToInt(bot2FinalTime / 60);
+        int bot2Seconds = Mathf.FloorToInt(bot2FinalTime % 60);
+        int bot2Centiseconds = Mathf.FloorToInt((bot2FinalTime * 100) % 100);
 
-        int minutes = Mathf.FloorToInt(finalTime / 60);
-        int seconds = Mathf.FloorToInt(finalTime % 60);
-        int centiseconds = Mathf.FloorToInt((finalTime * 100) % 100);
+        return $"\n\nBot_v2 time is {bot2Minutes:00}:{bot2Seconds:00}:{bot2Centiseconds:00}";
+    }
 
-        return $"\n\nYour final time is {minutes:00}:{seconds:00}:{centiseconds:00}";
+    private string PlayerFinalTime()
+    {
+        playerFinalTime = tmScript.timer - rewards;
+
+        int playerMinutes = Mathf.FloorToInt(playerFinalTime / 60);
+        int playerSeconds = Mathf.FloorToInt(playerFinalTime % 60);
+        int playerCentiseconds = Mathf.FloorToInt((playerFinalTime * 100) % 100);
+
+        return $"\n\nYour final time is {playerMinutes:00}:{playerSeconds:00}:{playerCentiseconds:00}";
     }
 }

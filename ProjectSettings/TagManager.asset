@@ -6,8 +6,10 @@ TagManager:
   tags:
   - Checkpoint
   - FinishLine
-  - Bot
   - BotTrack
+  - BotCheckpoint
+  - Bot_v1
+  - Bot_v2
   layers:
   - Default
   - TransparentFX
@@ -15,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
-  - BotLayer
+  - BotLayer_v1
   - PlayerLayer
-  - 
+  - BotLayer_v2
   - 
   - 
   - 
