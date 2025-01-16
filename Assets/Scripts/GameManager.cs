@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     private float rewards;
     public bool isCheckpointPassed;
     private float finalTime;
+    private float botFinalTime;
 
     [SerializeField] private GameObject UIManager;
     private TimerController tmScript;
@@ -24,11 +25,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<string> answers;
 
     private int currentCheckpointIndex = 0;
+    private bool botFinished;
 
     private void Start()
     {
         tmScript = UIManager.GetComponent<TimerController>();
         isCheckpointPassed = false;
+        botFinished = false;
 
         if (questions.Count != answers.Count)
         {
@@ -97,6 +100,13 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+
+        if (other.CompareTag("Bot") && !botFinished)
+        {
+            botFinalTime = tmScript.timer;
+            Debug.Log("Bot time: " + botFinalTime);
+            botFinished = true;
+        }
     }
 
     private void EndGame()
@@ -104,10 +114,19 @@ public class GameManager : MonoBehaviour
         tmScript.SetPauseState(true);
         Time.timeScale = 0f;
 
-        endGameText.text = FinalTime();
+        endGameText.text = BotFinalTime() + FinalTime();
         endGameScreen.SetActive(true);
 
         Debug.Log("Finish line reached!");
+    }
+
+    private string BotFinalTime()
+    {
+        int minutes = Mathf.FloorToInt(botFinalTime / 60);
+        int seconds = Mathf.FloorToInt(botFinalTime % 60);
+        int centiseconds = Mathf.FloorToInt((botFinalTime * 100) % 100);
+
+        return $"Bot time is {minutes:00}:{seconds:00}:{centiseconds:00}";
     }
 
     private string FinalTime()
@@ -118,6 +137,6 @@ public class GameManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(finalTime % 60);
         int centiseconds = Mathf.FloorToInt((finalTime * 100) % 100);
 
-        return $"Your final time is {minutes:00}:{seconds:00}:{centiseconds:00}";
+        return $"\n\nYour final time is {minutes:00}:{seconds:00}:{centiseconds:00}";
     }
 }

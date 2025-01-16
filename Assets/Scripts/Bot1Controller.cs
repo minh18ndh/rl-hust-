@@ -85,12 +85,12 @@ public class Bot1Controller : Agent
         if (dotProduct > 0.9)
         {
             AddReward(dotProduct * 0.1f); // Reward for forward motion
-            Debug.Log("Progress made. Reward: " + dotProduct * 0.1f);
+            //Debug.Log("Progress made. Reward: " + dotProduct * 0.1f);
         }
         else
         {
             AddReward(Mathf.Min(-0.01f, dotProduct * 0.5f)); // Penalize off-track and backward motion
-            Debug.Log("Backward. Reward: " + Mathf.Min(-0.01f, dotProduct * 0.5f));
+            //Debug.Log("Backward. Reward: " + Mathf.Min(-0.01f, dotProduct * 0.5f));
         }
 
         rewardTimer += Time.deltaTime;
@@ -99,13 +99,13 @@ public class Bot1Controller : Agent
             if (currentSpeed == constantSpeed)
             {
                 AddReward(1.0f);
-                Debug.Log("Stay on track. Reward: 1.0");
+                //Debug.Log("Stay on track. Reward: 1.0");
             }
 
             if (currentSpeed == collisionSpeed)
             {
                 AddReward(-1.0f);
-                Debug.Log("Stuck too long. Reward: -1.0");
+                //Debug.Log("Stuck too long. Reward: -1.0");
             }
 
             rewardTimer = 0f;
@@ -162,7 +162,7 @@ public class Bot1Controller : Agent
                 AddReward(20f);
                 Debug.Log("Finish line reached! Reward: 20");
                 //EndEpisode();
-                Debug.Log("EndEpisode called.");
+                //Debug.Log("EndEpisode called.");
             }
 
             else
@@ -170,7 +170,7 @@ public class Bot1Controller : Agent
                 isColliding = true;
                 currentSpeed = collisionSpeed;
                 AddReward(-0.5f);
-                Debug.Log("Collided. Reward: -0.5");
+                //Debug.Log("Collided. Reward: -0.5");
             }
         }
     }
@@ -179,7 +179,7 @@ public class Bot1Controller : Agent
     {
         isColliding = false;
         AddReward(0.3f);
-        Debug.Log("Escaped. Reward: 0.3");
+        //Debug.Log("Escaped. Reward: 0.3");
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -625,7 +625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00012207031, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0.00012207031, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &315565264
@@ -976,7 +976,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.012329102, y: 0.000061035156}
+  m_AnchoredPosition: {x: -0.012329102, y: 0}
   m_SizeDelta: {x: -746.66, y: -420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &805928125
@@ -1354,9 +1354,9 @@ MonoBehaviour:
   m_text: 'Each checkpoint challenges you with a question.
 
     Answer correctly
-    to reduce your total time by 5 seconds.
+    to reduce your total time by 2 seconds.
 
-    Answer incorrectly and 5 seconds
+    Answer incorrectly and 2 seconds
     will be added to your time.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2434f2a4532082b4ab09abcbef87b1bc, type: 2}
@@ -2192,7 +2192,7 @@ MonoBehaviour:
   m_text: 'Welcome to HUSTle Drive, the educational racing game!
 
     Your car moves
-    forward automatically. Use A and D to steer left and right.'
+    forward automatically. Use A and D to steer right and left.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2434f2a4532082b4ab09abcbef87b1bc, type: 2}
   m_sharedMaterial: {fileID: 1906111744789007586, guid: 2434f2a4532082b4ab09abcbef87b1bc, type: 2}
