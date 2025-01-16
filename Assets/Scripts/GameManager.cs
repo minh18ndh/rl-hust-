@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         tmScript = UIManager.GetComponent<TimerController>();
         isCheckpointPassed = false;
         bot1Finished = false;

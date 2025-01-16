@@ -8,6 +8,11 @@ public class TimerController : MonoBehaviour
     public float timer;   // Timer value in seconds
     private bool isPaused;
 
+    private void Start()
+    {
+        isPaused = false;
+    }
+
     void Update()
     {
         if (!isPaused) // Only update the timer if not paused

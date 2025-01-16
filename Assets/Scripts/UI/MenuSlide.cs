@@ -10,7 +10,8 @@ public class MenuSlide : MonoBehaviour
     {
         transform.LeanMoveLocalX(-transform.position.x, 2f);
         foreground.LeanAlpha(0f, 1f);
-        StartCoroutine("changeScene");
+        //StartCoroutine("changeScene");
+        SceneManager.LoadScene("Level1");
     }
     
     public IEnumerator changeScene()
