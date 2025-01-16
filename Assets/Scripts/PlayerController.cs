@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float constantSpeed = 1f;        // The constant speed of the car
     [SerializeField] private float collisionSpeed = 0.2f;     // Speed when the car collides
     [SerializeField] private float accelerationRate = 0.1f;   // Speed recovery rate after collision
-    [SerializeField] private float steeringSpeed = 200f;      // Steering sensitivity
+    [SerializeField] private float steeringSpeed = 300f;      // Steering sensitivity
 
     private float currentSpeed;
     private bool isColliding = false;
@@ -61,7 +61,8 @@ public class PlayerController : MonoBehaviour
     {
         // Move the car forward along its head-to-tail vector
         // The car's forward direction is along its local +X-axis
-        Vector2 forwardDirection = transform.right;  // Head to tail along the local +X-axis
+        // Head-to-tail line is along the local +X-axis
+        Vector2 forwardDirection = transform.right;
         rb.velocity = forwardDirection * currentSpeed;
     }
 
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
         if (!other.gameObject.CompareTag("Checkpoint"))
         {
             isColliding = true;
-            currentSpeed = collisionSpeed; // Reduce speed on collision
+            currentSpeed = collisionSpeed;
         }
     }
 

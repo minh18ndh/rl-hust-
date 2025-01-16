@@ -69,12 +69,12 @@ public class GameManager : MonoBehaviour
 
         if (userAnswer.Equals(correctAnswer, System.StringComparison.OrdinalIgnoreCase))
         {
-            rewards += 5;
+            rewards += 2;
             Debug.Log("Correct answer! Rewards: " + rewards);
         }
         else
         {
-            rewards -= 5;
+            rewards -= 2;
             Debug.Log("Wrong answer! Rewards: " + rewards);
         }
 

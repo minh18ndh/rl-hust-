@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main-Menu.unity
     guid: 2f8024a455f280b4fa11f6a1241da4d0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Menu-Level-Select.unity
     guid: 2cd62870d9127bf4194767ac3e19e54b
   - enabled: 1
@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Level2.unity
     guid: ec44f252e6dd2d74e9b37225bafaa187
+  - enabled: 1
+    path: Assets/Scenes/QuizSetup.unity
+    guid: cb6360b38ffeacd4f9d00bc18015a252
+  - enabled: 1
+    path: Assets/Scenes/Leaderboard.unity
+    guid: ea87e3f0520de4f41830758b8731e3bd
   m_configObjects: {}

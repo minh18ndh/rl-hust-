@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Checkpoint
+  - FinishLine
+  - Bot
+  - BotTrack
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - BotLayer
+  - PlayerLayer
   - 
   - 
   - 
