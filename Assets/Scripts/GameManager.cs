@@ -47,7 +47,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1f;
         tmScript = UIManager.GetComponent<TimerController>();
         isCheckpointPassed = false;
         bot1Finished = false;
@@ -168,6 +167,7 @@ public class GameManager : MonoBehaviour
         {
             bot1.SetActive(false);
             bot2.SetActive(false);
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Main-Menu");
         }
     }
@@ -177,6 +177,7 @@ public class GameManager : MonoBehaviour
         leaderboardLoader.UpdateData(nameText.text, ConvertFinalTime());
         bot1.SetActive(false);
         bot2.SetActive(false);
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Main-Menu");
     }
 
