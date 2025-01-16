@@ -1,44 +1,44 @@
 {
     "questions": [
         {
-            "q": "1 + 1 = ?",
-            "a": "2"
+            "q": "When was HUST founded?",
+            "a": "1956"
         },
         {
-            "q": "2 + 2 = ?",
+            "q": "How many main gates are there at HUST?",
+            "a": "3"
+        },
+        {
+            "q": "What’s the answer to life, the universe, and everything?",
+            "a": "42"
+        },
+        {
+            "q": "How many undergraduate programs did HUST offer in 2024?",
+            "a": "64"
+        },
+        {
+            "q": "4 + 4 = ?",
+            "a": "8"
+        },
+        {
+            "q": "How many letters are there in \"the alphabet\"?",
+            "a": "11"
+        },
+        {
+            "q": "How many prime numbers are there between 1 and 100?",
+            "a": "25"
+        },
+        {
+            "q": "How many zeros are there in a trillion?",
+            "a": "12"
+        },
+        {
+            "q": "2+2=?",
             "a": "4"
         },
         {
-            "q": "4 + 4 = ?",
-            "a": "8"
-        },
-        {
-            "q": "4 + 4 = ?",
-            "a": "8"
-        },
-        {
-            "q": "4 + 4 = ?",
-            "a": "8"
-        },
-        {
-            "q": "4 + 4 = ?",
-            "a": "8"
-        },
-        {
-            "q": "4 + 4 = ?",
-            "a": "8"
-        },
-        {
-            "q": "4 + 4 = ?",
-            "a": "8"
-        },
-        {
-            "q": "4 + 4 = ?",
-            "a": "8"
-        },
-        {
-            "q": "alo alo",
-            "a": "6"
+            "q": "What is the sum of the first 50 positive integers?",
+            "a": "1275"
         }
     ]
 }

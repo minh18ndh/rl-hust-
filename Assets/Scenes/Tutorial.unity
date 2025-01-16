@@ -181,8 +181,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Goal: Reach the finish line by passing all 5 checkpoints.'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2434f2a4532082b4ab09abcbef87b1bc, type: 2}
+  m_sharedMaterial: {fileID: 1906111744789007586, guid: 2434f2a4532082b4ab09abcbef87b1bc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.25
+  m_fontSize: 20.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1119,8 +1119,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 345, y: -170}
-  m_SizeDelta: {x: 395, y: 182.8942}
+  m_AnchoredPosition: {x: 336.80725, y: -170}
+  m_SizeDelta: {x: 333.0195, y: 182.8942}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &924500075
 MonoBehaviour:
@@ -1142,7 +1142,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f90d8e3d2d02143478fa72bec5043f76, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 88d4395cfa5aad34d8d2c729fbf76624, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1194,7 +1194,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 345, y: -278}
+  m_AnchoredPosition: {x: 345, y: -289.4}
   m_SizeDelta: {x: 585.5161, y: 24.8806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034221630
@@ -1631,8 +1631,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: The finish line only opens after passing all checkpoints.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2434f2a4532082b4ab09abcbef87b1bc, type: 2}
+  m_sharedMaterial: {fileID: 1906111744789007586, guid: 2434f2a4532082b4ab09abcbef87b1bc, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1656,7 +1656,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18.25
+  m_fontSize: 20.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1845,8 +1845,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000015259, y: -36}
-  m_SizeDelta: {x: 395, y: 182.8942}
+  m_AnchoredPosition: {x: -4.987, y: -36}
+  m_SizeDelta: {x: 333.7321, y: 182.8942}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1232451656
 MonoBehaviour:
