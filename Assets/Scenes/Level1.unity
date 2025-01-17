@@ -582,7 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 3
+    VectorObservationSize: 4
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -591,7 +591,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: d580cb688dd567644bcdea5b1bc557a9, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: d015a80343982a9449aa213a9c1eb86b, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 2
   m_BehaviorName: RacingBot
@@ -682,8 +682,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  constantSpeed: 1.4
-  collisionSpeed: 0.6
+  constantSpeed: 1.8
+  collisionSpeed: 0.8
   accelerationRate: 0.4
   steeringSpeed: 200
   botCheckpoints:
@@ -3538,7 +3538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7640705734164519202, guid: 09a2ff49216373b4a94b4cb7194e8d71, type: 3}
       propertyPath: m_Size.y
-      value: 12.194412
+      value: 8.232204
       objectReference: {fileID: 0}
     - target: {fileID: 7640705734164519202, guid: 09a2ff49216373b4a94b4cb7194e8d71, type: 3}
       propertyPath: m_Enabled
@@ -3550,7 +3550,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7640705734164519202, guid: 09a2ff49216373b4a94b4cb7194e8d71, type: 3}
       propertyPath: m_Offset.y
-      value: -9.75456
+      value: -11.735664
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4143,12 +4143,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -137.72176, y: 173.60153}
+    - - {x: -132.27193, y: 180.02954}
       - {x: -138.20728, y: -30.694504}
-      - {x: -137.7993, y: -95.51933}
-      - {x: -95.55187, y: -95.65236}
+      - {x: -138.12949, y: -87.26475}
+      - {x: -96.21225, y: -86.40722}
       - {x: -97.37166, y: 30.447487}
-      - {x: -96.70846, y: 133.51376}
+      - {x: -96.149506, y: 136.72778}
   m_UseDelaunayMesh: 0
 --- !u!1 &923151950
 GameObject:
@@ -4276,7 +4276,7 @@ Transform:
   m_GameObject: {fileID: 923151950}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 6.439, y: -2.004, z: 0}
+  m_LocalPosition: {x: 6.3882, y: -2.004, z: 0}
   m_LocalScale: {x: 0.31716886, y: 0.17109565, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5385,7 +5385,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245963458734153788, guid: 09a2ff49216373b4a94b4cb7194e8d71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.13
+      value: 7.242
       objectReference: {fileID: 0}
     - target: {fileID: 1245963458734153788, guid: 09a2ff49216373b4a94b4cb7194e8d71, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5426,6 +5426,10 @@ PrefabInstance:
     - target: {fileID: 7640705734164519202, guid: 09a2ff49216373b4a94b4cb7194e8d71, type: 3}
       propertyPath: m_Size.x
       value: 11.795022
+      objectReference: {fileID: 0}
+    - target: {fileID: 7640705734164519202, guid: 09a2ff49216373b4a94b4cb7194e8d71, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7640705734164519202, guid: 09a2ff49216373b4a94b4cb7194e8d71, type: 3}
       propertyPath: m_Offset.x
@@ -6040,8 +6044,8 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -267.66376, y: 13.263727}
-      - {x: -227.92574, y: -29.243528}
+    - - {x: -264.03052, y: 13.263727}
+      - {x: -225.55019, y: -29.383274}
       - {x: -23.389433, y: -30.48557}
       - {x: -23.136658, y: 13.100755}
       - {x: -213.9334, y: 12.593144}

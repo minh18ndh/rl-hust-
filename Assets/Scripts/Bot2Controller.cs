@@ -3,14 +3,15 @@ using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
 
 public class Bot2Controller : Agent
 {
     [Header("Car Settings")]
-    [SerializeField] private float constantSpeed = 1.8f;      // The constant speed of the car
-    [SerializeField] private float collisionSpeed = 0.8f;     // Speed when the car collides
-    [SerializeField] private float accelerationRate = 0.4f;   // Speed recovery rate after collision
-    [SerializeField] private float steeringSpeed = 200f;      // Steering sensitivity
+    [SerializeField] private float constantSpeed;      // The constant speed of the car
+    [SerializeField] private float collisionSpeed;     // Speed when the car collides
+    [SerializeField] private float accelerationRate;   // Speed recovery rate after collision
+    [SerializeField] private float steeringSpeed;      // Steering sensitivity
 
     private float currentSpeed;
     private bool isColliding = false;
@@ -22,10 +23,19 @@ public class Bot2Controller : Agent
     [SerializeField] private Transform[] botCheckpoints;      // List of checkpoint positions
     private int nextCheckpoint;                               // Index of the next checkpoint
 
+    //private int colliderCount;
+
+    //[SerializeField] private GameObject UIManager;
+    //private TimerController tmScript;
+
+    private float previousDistanceToCheckpoint = float.MaxValue; // Initialize with a large value
+
     private void Start()
     {
         rewardTimer = 0f;
         nextCheckpoint = 1;
+
+        //tmScript = UIManager.GetComponent<TimerController>();
     }
 
     private void Update()
@@ -42,11 +52,15 @@ public class Bot2Controller : Agent
 
     public override void OnEpisodeBegin()
     {
+        //tmScript.timer = 0f;
+
         transform.position = new Vector3(4f, -6.2f, 0);
         transform.rotation = Quaternion.Euler(0, 0, 42.1f);
 
         rewardTimer = 0f;
         nextCheckpoint = 1;
+
+        previousDistanceToCheckpoint = float.MaxValue;
 
         //Debug.Log("OnEpisodeBegin called.");
     }
@@ -59,12 +73,23 @@ public class Bot2Controller : Agent
 
         sensor.AddObservation(transform.rotation.eulerAngles.z);
 
+        // Calculate distance to the middle of the track
+        Vector2 p1 = botCheckpoints[nextCheckpoint - 1].position;
+        Vector2 p2 = botCheckpoints[nextCheckpoint].position;
+        Vector2 p = transform.position;
+
+        Vector2 checkpointVector = p2 - p1;
+        Vector2 botVector = p - p1;
+
+        // Perpendicular distance to the middle of the track
+        float distanceToMiddle = Mathf.Abs(Vector3.Cross(checkpointVector, botVector).z) / checkpointVector.magnitude;
+
+        // Add distance to the observation space
+        sensor.AddObservation(distanceToMiddle);
+
         //Debug.Log("Observations collected.");
     }
 
-    Vector2 trackDirection;
-    Vector2 velocityDirection;
-    float dotProduct;
     public override void OnActionReceived(ActionBuffers actions)
     {
         // Get the steering action from the discrete action space
@@ -76,40 +101,9 @@ public class Bot2Controller : Agent
         MoveForward();
         RecoverSpeed();
 
-        trackDirection = (botCheckpoints[nextCheckpoint].position - botCheckpoints[nextCheckpoint - 1].position).normalized;
-        //Debug.Log("trackDirection: " + trackDirection);
-        velocityDirection = rb.velocity.normalized;
-        //Debug.Log("velocityDirection: " + velocityDirection);
-        dotProduct = Vector2.Dot(velocityDirection, trackDirection);
+        CheckTrackAlignment();
 
-        if (dotProduct > 0.9)
-        {
-            AddReward(dotProduct * 0.1f); // Reward for forward motion
-            //Debug.Log("Progress made. Reward: " + dotProduct * 0.1f);
-        }
-        else
-        {
-            AddReward(Mathf.Min(-0.01f, dotProduct * 0.5f)); // Penalize off-track and backward motion
-            //Debug.Log("Backward. Reward: " + Mathf.Min(-0.01f, dotProduct * 0.5f));
-        }
-
-        rewardTimer += Time.deltaTime;
-        if (rewardTimer >= 1f)
-        {
-            if (currentSpeed == constantSpeed)
-            {
-                AddReward(1.0f);
-                //Debug.Log("Stay on track. Reward: 1.0");
-            }
-
-            if (currentSpeed == collisionSpeed)
-            {
-                AddReward(-1.0f);
-                //Debug.Log("Stuck too long. Reward: -1.0");
-            }
-
-            rewardTimer = 0f;
-        }
+        CheckProgressAndCollision();
 
         //Debug.Log("OnActionReceived called."); // Called every frame
     }
@@ -153,6 +147,76 @@ public class Bot2Controller : Agent
         }
     }
 
+    private float trackMiddleThreshold = 0.1f;
+
+    // Check if bot is near the middle of the track
+    private void CheckTrackAlignment()
+    {
+        Vector2 p1 = botCheckpoints[nextCheckpoint - 1].position;
+        Vector2 p2 = botCheckpoints[nextCheckpoint].position;
+        Vector2 p = transform.position;
+
+        // Vector between checkpoints
+        Vector2 checkpointVector = p2 - p1;
+
+        // Vector from previous checkpoint to the bot
+        Vector2 botVector = p - p1;
+
+        // Perpendicular distance (cross product magnitude divided by checkpoint vector length)
+        float distanceToMiddle = Mathf.Abs(Vector3.Cross(checkpointVector, botVector).z) / checkpointVector.magnitude;
+
+        // Reward or penalize the bot based on its distance to the middle
+        if (distanceToMiddle < trackMiddleThreshold)
+        {
+            AddReward(0.1f);
+            //Debug.Log("Close to the middle. Distance: " + distanceToMiddle);
+        }
+        else
+        {
+            AddReward(-0.1f);
+            //Debug.Log("Far from the middle. Distance: " + distanceToMiddle);
+        }
+    }
+
+    private void CheckProgressAndCollision()
+    {
+        // Calculate current distance to the next checkpoint
+        float currentDistanceToCheckpoint = Vector2.Distance(botCheckpoints[nextCheckpoint].position, transform.position);
+
+        // Reward or penalize based on whether the bot is getting closer
+        if (currentDistanceToCheckpoint < previousDistanceToCheckpoint)
+        {
+            AddReward(0.1f); // Reward for progress
+            //Debug.Log("Getting closer to checkpoint. Reward added.");
+        }
+        else
+        {
+            AddReward(-0.1f); // Penalty for moving away
+            //Debug.Log("Moving further from checkpoint. Penalty added.");
+        }
+
+        // Update the previous distance
+        previousDistanceToCheckpoint = currentDistanceToCheckpoint;
+
+        rewardTimer += Time.deltaTime;
+        if (rewardTimer >= 1.0f)
+        {
+            if (currentSpeed == constantSpeed)
+            {
+                AddReward(1.0f);
+                //Debug.Log("Stay on track. Reward: 1.0");
+            }
+
+            if (currentSpeed == collisionSpeed)
+            {
+                AddReward(-1.0f);
+                //Debug.Log("Stuck too long. Reward: -1.0");
+            }
+
+            rewardTimer = 0f;
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!other.gameObject.CompareTag("Checkpoint"))
@@ -161,8 +225,8 @@ public class Bot2Controller : Agent
             {
                 AddReward(20f);
                 Debug.Log("Finish line reached! Reward: 20");
-                //EndEpisode();
-                //Debug.Log("EndEpisode called.");
+                EndEpisode();
+                Debug.Log("EndEpisode called.");
             }
 
             else
