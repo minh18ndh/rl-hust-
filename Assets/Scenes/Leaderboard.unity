@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088e349f2a761514b95c889d2ecaa0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFilePath: Assets/Data/leaderboard.json
+  jsonFilePath: Data/leaderboard.json
   records:
   - {fileID: 244202865}
   - {fileID: 1135980444}
@@ -2141,6 +2141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4bd1374c88e5ca46a0baa141c359310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bot1: {fileID: 0}
+  bot2: {fileID: 0}
 --- !u!114 &1194225992
 MonoBehaviour:
   m_ObjectHideFlags: 0

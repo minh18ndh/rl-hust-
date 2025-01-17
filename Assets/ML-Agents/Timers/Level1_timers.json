@@ -1,1 +1,67 @@
-{"count":1,"self":86.7220224,"total":87.9635814,"children":{"InitializeActuators":{"count":2,"self":0.001,"total":0.001,"children":null},"InitializeSensors":{"count":2,"self":0.00099969999999999985,"total":0.00099969999999999985,"children":null},"AgentSendState":{"count":2571,"self":0.0098882,"total":0.021885699999999998,"children":{"CollectObservations":{"count":1030,"self":0.0029944999999999998,"total":0.0029944999999999998,"children":null},"WriteActionMask":{"count":1030,"self":0,"total":0,"children":null},"RequestDecision":{"count":1030,"self":0.0090029999999999989,"total":0.0090029999999999989,"children":null}}},"DecideAction":{"count":2571,"self":1.1961365,"total":1.1961365,"children":null},"AgentAct":{"count":2571,"self":0.0215344,"total":0.0215344,"children":null}},"gauges":{},"metadata":{"timer_format_version":"0.1.0","start_time_seconds":"1737092832","unity_version":"2022.3.46f1","command_line_arguments":"C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.46f1\\Editor\\Unity.exe -projectpath E:\\rl-hust-car-racing -useHub -hubIPC -cloudEnvironment production -licensingIpc LicenseClient-minhn -hubSessionId c3d46cc4-b558-4fe1-b621-d98cb53ad248 -accessToken HRIbg4xKYvP3WX1dzJqOJiEG2oiXw8LhGlv2rwB61ug011f","communication_protocol_version":"1.5.0","com.unity.ml-agents_version":"2.0.1","scene_name":"Level1","end_time_seconds":"1737092920"}}
+{
+    "count": 1,
+    "self": 31.3531072,
+    "total": 31.695176099999998,
+    "children": {
+        "InitializeActuators": {
+            "count": 6,
+            "self": 0.0010274,
+            "total": 0.0010274,
+            "children": null
+        },
+        "InitializeSensors": {
+            "count": 6,
+            "self": 0.0009748,
+            "total": 0.0009748,
+            "children": null
+        },
+        "AgentSendState": {
+            "count": 1036,
+            "self": 0.0080106,
+            "total": 0.0185722,
+            "children": {
+                "CollectObservations": {
+                    "count": 320,
+                    "self": 0.0015106,
+                    "total": 0.0015106,
+                    "children": null
+                },
+                "WriteActionMask": {
+                    "count": 320,
+                    "self": 0,
+                    "total": 0,
+                    "children": null
+                },
+                "RequestDecision": {
+                    "count": 320,
+                    "self": 0.009051,
+                    "total": 0.009051,
+                    "children": null
+                }
+            }
+        },
+        "DecideAction": {
+            "count": 1036,
+            "self": 0.3021987,
+            "total": 0.3021987,
+            "children": null
+        },
+        "AgentAct": {
+            "count": 1036,
+            "self": 0.0177929,
+            "total": 0.0177929,
+            "children": null
+        }
+    },
+    "gauges": {},
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1737080753",
+        "unity_version": "2022.3.46f1",
+        "command_line_arguments": "C:\\Program Files\\Unity\\Hub\\Editor\\2022.3.46f1\\Editor\\Unity.exe -projectpath E:\\Project\\Unity\\rl-hust-car-racing -useHub -hubIPC -cloudEnvironment production -licensingIpc LicenseClient-chien -hubSessionId f6eb4061-916c-4884-8198-d6fe29528985 -accessToken Ox6OkYQHhm5pot0DeQ_hOjHdhBj1vzRN_XmC-Vypo7I011f",
+        "communication_protocol_version": "1.5.0",
+        "com.unity.ml-agents_version": "2.0.1",
+        "scene_name": "Level1",
+        "end_time_seconds": "1737080785"
+    }
+}

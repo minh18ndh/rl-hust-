@@ -18,12 +18,13 @@ public class QuestionAnswerList
 
 public class QALoader : MonoBehaviour
 {
-    public string jsonFilePath = "Assets/Data/questions.json";
+    public string jsonFilePath = "Data/questions.json";
     private QuestionAnswerList data;
     public InputQA[] inputs;
 
     void Start()
     {
+        jsonFilePath = Path.Combine(Application.streamingAssetsPath, jsonFilePath);
         data = LoadDataFromJson(jsonFilePath);
         int i = 0;
         foreach (var input in inputs)

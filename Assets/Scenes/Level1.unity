@@ -5660,7 +5660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 755fbeb8ef72ab04ba4d3597ae2d754f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFilePath: Assets/Data/questions.json
+  jsonFilePath: Data/questions.json
   inputs: []
 --- !u!4 &1231456424
 Transform:
@@ -5689,7 +5689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088e349f2a761514b95c889d2ecaa0cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonFilePath: Assets/Data/leaderboard.json
+  jsonFilePath: Data/leaderboard.json
   records: []
 --- !u!1 &1240840998
 GameObject:

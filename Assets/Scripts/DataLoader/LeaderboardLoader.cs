@@ -20,12 +20,13 @@ public class PlayerRecordList
 
 public class LeaderboardLoader : MonoBehaviour
 {
-    public string jsonFilePath = "Assets/Data/leaderboard.json";
+    public string jsonFilePath = "Data/leaderboard.json";
     private PlayerRecordList data;
     public TextRecord[] records;
 
     void Start()
     {
+        jsonFilePath = Path.Combine(Application.streamingAssetsPath, jsonFilePath);
         data = LoadDataFromJson(jsonFilePath);
         int i = 0;
         foreach (var record in records)
